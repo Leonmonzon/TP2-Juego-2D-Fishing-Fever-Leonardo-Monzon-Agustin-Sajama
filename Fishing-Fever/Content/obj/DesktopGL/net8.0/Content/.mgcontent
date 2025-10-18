@@ -7,10 +7,14 @@
     <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/Base pescador.png</File>
     <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/Fondo.png</File>
     <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/Pez alga.png</File>
+    <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/rojoEsfuerzoCaña.png</File>
+    <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/rojoTirarCaña.png</File>
   </SourceFiles>
   <DestFiles>
     <File>Images/basePescador.png</File>
     <File>Images/fondo.png</File>
     <File>Images/pezAlga.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

@@ -33,3 +33,5 @@ C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\obj\Debug\net8.0\ref\Fishing-F
 C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\bin\Debug\net8.0\Content\Images\Fondo.xnb
 C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\bin\Debug\net8.0\Content\Images\basePescador.xnb
 C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\bin\Debug\net8.0\Content\Images\pezAlga.xnb
+C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\bin\Debug\net8.0\Content\Images\rojoTirarCaña.xnb
+C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\bin\Debug\net8.0\Content\Images\rojoEsfuerzoCaña.xnb
