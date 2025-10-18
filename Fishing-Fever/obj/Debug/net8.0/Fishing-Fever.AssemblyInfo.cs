@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fishing-Fever")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+80f1961f770858a4baee5808487b9433f32c79e3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3477d3afabe32e9fc0350d531009fb8c8b3de1cf")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fishing-Fever")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fishing-Fever")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

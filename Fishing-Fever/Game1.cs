@@ -6,6 +6,16 @@ namespace Fishing_Fever;
 
 public class Game1 : Game
 {
+    Texture2D fondo;
+
+
+    Texture2D basePescador;
+    Vector2 posPescador;
+
+
+
+
+
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
@@ -18,7 +28,6 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
 
         base.Initialize();
     }
@@ -27,7 +36,23 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        // TODO: use this.Content to load your game content here
+        //cargo el fondo
+        fondo = Content.Load<Texture2D>("Images/fondo");
+        //fin carga fondo
+
+
+        //cargo la base del pescador
+        basePescador = Content.Load<Texture2D>("Images/basePescador");
+
+
+        posPescador = new Vector2(
+    (_graphics.PreferredBackBufferWidth / 2) + 75 - basePescador.Width / 2,
+    (_graphics.PreferredBackBufferHeight / 2) + 26 - basePescador.Height / 2
+);
+
+
+
+        //fin carga pescador
     }
 
     protected override void Update(GameTime gameTime)
@@ -35,7 +60,6 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        // TODO: Add your update logic here
 
         base.Update(gameTime);
     }
@@ -44,8 +68,38 @@ public class Game1 : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+        //pongo el fondo
+        _spriteBatch.Begin();
+        _spriteBatch.Draw(
+    fondo,
+    new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight),
+    null,
+    Color.White,
+    0f,
+    Vector2.Zero,
+    SpriteEffects.FlipHorizontally,
+    0f
+);
+        //fin fondo
 
+
+        //dibujo la base del pescador
+        _spriteBatch.Draw(
+    basePescador,
+    posPescador, 
+    null, 
+    Color.White,
+    0f,
+    Vector2.Zero,
+    3f,
+    SpriteEffects.None,
+    0f
+);
+        //fin dibujo pescador
+
+        _spriteBatch.End();
         base.Draw(gameTime);
     }
+
+
 }

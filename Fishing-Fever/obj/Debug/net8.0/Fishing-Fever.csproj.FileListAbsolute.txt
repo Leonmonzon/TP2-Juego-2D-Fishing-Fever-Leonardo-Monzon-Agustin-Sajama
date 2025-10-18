@@ -30,3 +30,6 @@ C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\obj\Debug\net8.0\refint\Fishin
 C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.pdb
 C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.genruntimeconfig.cache
 C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\obj\Debug\net8.0\ref\Fishing-Fever.dll
+C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\bin\Debug\net8.0\Content\Images\Fondo.xnb
+C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\bin\Debug\net8.0\Content\Images\basePescador.xnb
+C:\Users\PC\Documents\Fishing-Fever\Fishing-Fever\bin\Debug\net8.0\Content\Images\pezAlga.xnb

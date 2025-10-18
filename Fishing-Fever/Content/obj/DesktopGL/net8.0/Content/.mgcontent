@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/Base pescador.png</File>
+    <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/Fondo.png</File>
+    <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/Pez alga.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File>Images/basePescador.png</File>
+    <File>Images/fondo.png</File>
+    <File>Images/pezAlga.png</File>
+  </DestFiles>
+</SourceFileCollection>

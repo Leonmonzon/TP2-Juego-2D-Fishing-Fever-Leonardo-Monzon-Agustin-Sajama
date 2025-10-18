@@ -1,1 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/Base pescador.png","C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/bin/DesktopGL/Content/Images/basePescador.xnb","TextureProcessor","Texture2DContent",798,1885,0.1521675
+"C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/Fondo.png","C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/bin/DesktopGL/Content/Images/fondo.xnb","TextureProcessor","Texture2DContent",55872,172785,0.1561219
+"C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/Pez alga.png","C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/bin/DesktopGL/Content/Images/pezAlga.xnb","TextureProcessor","Texture2DContent",480,1109,0.006053
