@@ -4,11 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/Base pescador.png</File>
-    <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/Fondo.png</File>
-    <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/Pez alga.png</File>
-    <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/rojoEsfuerzoCaña.png</File>
-    <File>C:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/rojoTirarCaña.png</File>
+    <File>C:/Users/PC/Documents/ajsjasjasjajasjasj/Fishing-Fever/Content/Images/Base pescador.png</File>
+    <File>C:/Users/PC/Documents/ajsjasjasjajasjasj/Fishing-Fever/Content/Images/Fondo.png</File>
+    <File>C:/Users/PC/Documents/ajsjasjasjajasjasj/Fishing-Fever/Content/Images/Pez alga.png</File>
+    <File>C:/Users/PC/Documents/ajsjasjasjajasjasj/Fishing-Fever/Content/Images/rojoEsfuerzoCaña.png</File>
+    <File>C:/Users/PC/Documents/ajsjasjasjajasjasj/Fishing-Fever/Content/Images/rojoTirarCaña.png</File>
   </SourceFiles>
   <DestFiles>
     <File>Images/basePescador.png</File>
