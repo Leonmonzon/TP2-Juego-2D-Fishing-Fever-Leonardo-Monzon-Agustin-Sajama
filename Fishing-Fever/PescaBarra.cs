@@ -6,7 +6,7 @@ namespace Fishing_Fever
 {
     public class PescaBarra
     {
-        // Texturas básicas (podís usar rectángulos de color si no tienes sprites)
+        // Texturas básicas
         private Texture2D texturaFondo;
         private Texture2D texturaBarra;
         private Texture2D texturaPez;
