@@ -1,165 +1,104 @@
-﻿using Microsoft.Xna.Framework;
+﻿// librerias necesarias para monogame
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Fishing_Fever;
-
-public class Game1 : Game
+namespace Fishing_Fever
 {
-    Texture2D fondo;
-
-    // sprites de animacion
-    Texture2D rojoTirarCaña;
-    Texture2D rojoEsfuerzoCaña;
-
-    Vector2 posPescador;
-
-    // control de animacion
-    int frameActual = 0;
-    double tiempoFrame = 0;
-    double duracionFrame = 0.15;
-
-    // estados de animacion
-    bool animandoTiro = false;
-    bool animandoRetiro = false;
-    bool enEsfuerzo = false;
-
-    private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
-
-    public Game1()
+    // clase principal del juego
+    public class Game1 : Game
     {
-        _graphics = new GraphicsDeviceManager(this);
-        Content.RootDirectory = "Content";
-        IsMouseVisible = true;
-    }
+        PescaBarra barraPesca;
+        // objeto que maneja configuracion de la ventana y resolucion
+        private GraphicsDeviceManager _graphics;
 
-    protected override void LoadContent()
-    {
-        _spriteBatch = new SpriteBatch(GraphicsDevice);
+        // objeto que permite dibujar cosas en pantalla
+        private SpriteBatch _spriteBatch;
 
-        // cargo las imagenes del juego
-        fondo = Content.Load<Texture2D>("Images/fondo");
-        rojoTirarCaña = Content.Load<Texture2D>("Images/rojoTirarCaña");
-        rojoEsfuerzoCaña = Content.Load<Texture2D>("Images/rojoEsfuerzoCaña");
+        // textura para el fondo del juego
+        private Texture2D fondo;
 
-        // posicion del pescador, centrado y un poco a la derecha
-        posPescador = new Vector2(
-            (_graphics.PreferredBackBufferWidth / 2) + 75 - 15,
-            (_graphics.PreferredBackBufferHeight / 2) - 27
-        );
-    }
+        // objeto del pescador, que maneja su animacion
+        private Pescador pescador;
 
-    protected override void Update(GameTime gameTime)
-    {
-        var mouse = Mouse.GetState();
-
-        // cerrar el juego con escape o boton de mando
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-            Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
-
-        // si se hace click y no esta animando
-        if (mouse.LeftButton == ButtonState.Pressed && !animandoTiro && !animandoRetiro)
+        // constructor, inicializa cosas basicas
+        public Game1()
         {
-            // si no esta en esfuerzo, empieza la animacion de tirar
-            if (!enEsfuerzo)
-            {
-                animandoTiro = true;
-                frameActual = 0;
-            }
-            // si ya esta en esfuerzo, empieza la animacion de recoger
-            else
-            {
-                animandoRetiro = true;
-                frameActual = 2;
-            }
-
-            tiempoFrame = 0;
+            _graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content"; // carpeta donde estan las imagenes y sonidos
+            IsMouseVisible = true; // muestra el cursor del mouse
         }
 
-        // acumula el tiempo del frame
-        tiempoFrame += gameTime.ElapsedGameTime.TotalSeconds;
-
-        // animacion de tirar la caña
-        if (animandoTiro)
+        // se ejecuta una sola vez al iniciar el juego, para cargar imagenes
+        protected override void LoadContent()
         {
-            if (tiempoFrame >= duracionFrame)
-            {
-                frameActual++;
-                tiempoFrame = 0;
 
-                // cuando termina los frames pasa al estado de esfuerzo
-                if (frameActual >= 3)
-                {
-                    frameActual = 0;
-                    animandoTiro = false;
-                    enEsfuerzo = true;
-                }
-            }
-        }
-        // animacion de recoger (va al reves)
-        else if (animandoRetiro)
-        {
-            if (tiempoFrame >= duracionFrame)
-            {
-                frameActual--;
-                tiempoFrame = 0;
+            barraPesca = new PescaBarra(GraphicsDevice, new Vector2(700, 200));
 
-                // si vuelve al frame base, termina y vuelve al inicio
-                if (frameActual < 0)
-                {
-                    frameActual = 0;
-                    animandoRetiro = false;
-                    enEsfuerzo = false;
-                }
-            }
-        }
-        // animacion en bucle del esfuerzo
-        else if (enEsfuerzo)
-        {
-            // se mueve mas lento entre los frames
-            if (tiempoFrame >= duracionFrame * 4)
-            {
-                frameActual++;
-                tiempoFrame = 0;
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-                // bucle entre frame 1 y 2
-                if (frameActual > 2)
-                    frameActual = 1;
-            }
+            // carga el fondo desde la carpeta Content/Images
+            fondo = Content.Load<Texture2D>("Images/fondo");
+
+            // crea el pescador, pasandole la posicion inicial
+            pescador = new Pescador(
+                Content,
+                new Vector2(
+                    (_graphics.PreferredBackBufferWidth / 2) + 75 - 15, // centrado un poco a la derecha
+                    (_graphics.PreferredBackBufferHeight / 2) - 27       // un poco arriba
+                )
+            );
         }
 
-        base.Update(gameTime);
-    }
+        // se ejecuta cada frame, maneja la logica del juego
+        protected override void Update(GameTime gameTime)
+        {
 
-    protected override void Draw(GameTime gameTime)
-    {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
-        _spriteBatch.Begin();
 
-        // dibujo el fondo
-        _spriteBatch.Draw(
-            fondo,
-            new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight),
-            null,
-            Color.White,
-            0f,
-            Vector2.Zero,
-            SpriteEffects.FlipHorizontally,
-            0f
-        );
+            var mouse = Mouse.GetState();
+            if (mouse.LeftButton == ButtonState.Pressed && !barraPesca.EstaActiva())
+                barraPesca.Activar();
 
-        // elijo que sprite usar segun el estado
-        Texture2D spriteActual = enEsfuerzo ? rojoEsfuerzoCaña : rojoTirarCaña;
+            barraPesca.Actualizar(gameTime);
+            // si se presiona ESC, cierra el juego
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
 
-        // recorto el frame actual del sprite (cada frame mide 30x40)
-        Rectangle sourceRect = new Rectangle(frameActual * 30, 0, 30, 40);
+            // actualiza la logica y animacion del pescador
+            pescador.Update(gameTime);
 
-        // dibujo el pescador en su posicion con escala 3x
-        _spriteBatch.Draw(spriteActual, posPescador, sourceRect, Color.White, 0f, Vector2.Zero, 3f, SpriteEffects.None, 0f);
+            base.Update(gameTime);
+        }
 
-        _spriteBatch.End();
-        base.Draw(gameTime);
+        // se ejecuta cada frame despues del Update, dibuja todo
+        protected override void Draw(GameTime gameTime)
+        {
+            // limpia la pantalla con color celeste
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            // comienza el proceso de dibujo
+            _spriteBatch.Begin();
+
+            // dibuja el fondo en toda la pantalla
+            // se usa "FlipHorizontally" para que quede al reves (espejado)
+            _spriteBatch.Draw(
+                fondo,
+                new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight),
+                null,
+                Color.White,
+                0f,
+                Vector2.Zero,
+                SpriteEffects.FlipHorizontally,
+                0f
+            );
+            barraPesca.Dibujar(_spriteBatch);
+            // dibuja al pescador
+            pescador.Draw(_spriteBatch);
+
+            // termina el proceso de dibujo
+            _spriteBatch.End();
+
+            base.Draw(gameTime);
+        }
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>c:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/Images/rojoTirarCaña.png</SourceFile>
+  <SourceFile>c:/Users/PC/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/rojoTirarCaña.png</SourceFile>
   <SourceTime>2025-10-18T16:27:12.7784927-03:00</SourceTime>
-  <DestFile>c:/Users/PC/Documents/Fishing-Fever/Fishing-Fever/Content/bin/DesktopGL/Images/rojoTirarCaña.xnb</DestFile>
-  <DestTime>2025-10-18T17:05:25.1505403-03:00</DestTime>
+  <DestFile>c:/Users/PC/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/bin/DesktopGL/Images/rojoTirarCaña.xnb</DestFile>
+  <DestTime>2025-11-06T21:47:00.2837438-03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2025-06-02T07:31:02-03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

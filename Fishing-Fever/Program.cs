@@ -1,2 +1,2 @@
-﻿using var game = new Fishing_Fever.Game1();
+﻿using var game = new Fishing_Fever.Intro();
 game.Run();
