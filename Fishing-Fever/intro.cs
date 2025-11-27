@@ -6,11 +6,11 @@ namespace Fishing_Fever
 {
     public class Intro : Game
     {
-        GraphicsDeviceManager _graphics;
-        SpriteBatch _spriteBatch;
+        private GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
 
-        Texture2D portada;
-        bool cambiarAScene;
+        private Texture2D portada;
+        private bool cambiarAScene = false;
 
         public Intro()
         {
@@ -22,7 +22,6 @@ namespace Fishing_Fever
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
             portada = Content.Load<Texture2D>("Images/portada");
         }
 
@@ -31,16 +30,13 @@ namespace Fishing_Fever
             var mouse = Mouse.GetState();
 
             if (mouse.LeftButton == ButtonState.Pressed)
-            {
                 cambiarAScene = true;
-            }
 
-            if (cambiarAScene)
-            {
-                Game1 juego = new Game1();
-                juego.Run();
-                Exit();
-            }
+            if (mouse.LeftButton == ButtonState.Pressed)
+{
+    Exit();
+}
+
 
             base.Update(gameTime);
         }
@@ -50,7 +46,15 @@ namespace Fishing_Fever
             GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin();
-            _spriteBatch.Draw(portada, new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), Color.White);
+            _spriteBatch.Draw(
+                portada,
+                new Rectangle(
+                    0, 0, 
+                    _graphics.PreferredBackBufferWidth, 
+                    _graphics.PreferredBackBufferHeight
+                ),
+                Color.White
+            );
             _spriteBatch.End();
 
             base.Draw(gameTime);

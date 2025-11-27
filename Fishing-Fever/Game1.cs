@@ -8,6 +8,8 @@ namespace Fishing_Fever
     // clase principal del juego
     public class Game1 : Game
     {
+        private LogicaPeces logicaPeces;
+
         PescaBarra barraPesca;
         // objeto que maneja configuracion de la ventana y resolucion
         private GraphicsDeviceManager _graphics;
@@ -32,6 +34,7 @@ namespace Fishing_Fever
         // se ejecuta una sola vez al iniciar el juego, para cargar imagenes
         protected override void LoadContent()
         {
+logicaPeces = new LogicaPeces(Content);
 
             barraPesca = new PescaBarra(GraphicsDevice, new Vector2(700, 200));
 
@@ -60,6 +63,9 @@ namespace Fishing_Fever
                 barraPesca.Activar();
 
             barraPesca.Actualizar(gameTime);
+            if (barraPesca.PescaCompletada)
+    logicaPeces.MostrarPez();
+
             // si se presiona ESC, cierra el juego
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -94,6 +100,7 @@ namespace Fishing_Fever
             barraPesca.Dibujar(_spriteBatch);
             // dibuja al pescador
             pescador.Draw(_spriteBatch);
+logicaPeces.Dibujar(_spriteBatch);
 
             // termina el proceso de dibujo
             _spriteBatch.End();
