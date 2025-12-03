@@ -295,31 +295,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Agustin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC\\Documents\\fishing fever\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj",
+      "projectUniqueName": "C:\\Users\\Agustin\\Downloads\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev\\Fishing-Fever\\Fishing-Fever.csproj",
       "projectName": "Fishing-Fever",
-      "projectPath": "C:\\Users\\PC\\Documents\\fishing fever\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC\\Documents\\fishing fever\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\obj\\",
+      "projectPath": "C:\\Users\\Agustin\\Downloads\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev\\Fishing-Fever\\Fishing-Fever.csproj",
+      "packagesPath": "C:\\Users\\Agustin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Agustin\\Downloads\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev\\Fishing-Fever\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Agustin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -337,8 +330,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.300"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -369,7 +361,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.416/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,132 +1,95 @@
-// librerias necesarias para trabajar con monogame
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 
 namespace Fishing_Fever
 {
-    // clase que maneja todo lo del pescador y sus animaciones
     public class Pescador
     {
-        // texturas de las animaciones
-        private Texture2D rojoTirarCaña;    // animacion de tirar la caña
-        private Texture2D rojoEsfuerzoCaña; // animacion de esfuerzo
+        private Texture2D rojoTirarCaña;    
+        private Texture2D rojoEsfuerzoCaña; 
+        
+        public Vector2 Posicion { get; private set; } 
 
-        // posicion del pescador en pantalla
-        private Vector2 posicion;
+        public int FrameActual { get; set; } = 0;         
+        private double tiempoFrame = 0;      
+        private double duracionFrame = 0.15;  
 
-        // variables de control de frames y tiempo
-        private int frameActual = 0;          // frame que se esta mostrando
-        private double tiempoFrame = 0;       // tiempo acumulado desde el ultimo frame
-        private double duracionFrame = 0.15;  // cuanto dura cada frame
+        public bool AnimandoTiro { get; set; } = false;    
+        public bool EnEsfuerzo { get; private set; } = false;      
 
-        // banderas de estado
-        private bool animandoTiro = false;    // si esta tirando la caña
-        private bool animandoRetiro = false;  // si esta recogiendo
-        private bool enEsfuerzo = false;      // si esta en animacion de esfuerzo
-
-        // constructor del pescador
         public Pescador(ContentManager content, Vector2 posicionInicial)
         {
-            // carga las dos imagenes desde la carpeta Content/Images
+            // Carga las texturas (asegúrate que Content/Images existe)
             rojoTirarCaña = content.Load<Texture2D>("Images/rojoTirarCaña");
             rojoEsfuerzoCaña = content.Load<Texture2D>("Images/rojoEsfuerzoCaña");
-
-            // guarda la posicion
-            posicion = posicionInicial;
+            Posicion = posicionInicial;
         }
 
-        // actualiza el estado del pescador cada frame
-        public void Update(GameTime gameTime)
+        public void Lanzar()
         {
-            var mouse = Mouse.GetState();
-
-            // si el jugador hace click y no esta animando
-            if (mouse.LeftButton == ButtonState.Pressed && !animandoTiro && !animandoRetiro)
+            if (!EnEsfuerzo && !AnimandoTiro)
             {
-                // si no esta en esfuerzo, empieza la animacion de tirar
-                if (!enEsfuerzo)
-                {
-                    animandoTiro = true;
-                    frameActual = 0;
-                }
-                // si ya esta en esfuerzo, empieza la animacion de recoger
-                else
-                {
-                    animandoRetiro = true;
-                    frameActual = 2;
-                }
-
-                // reinicia el tiempo del frame
+                AnimandoTiro = true;
+                FrameActual = 0;
                 tiempoFrame = 0;
             }
+        }
 
-            // acumula el tiempo desde el ultimo frame
+        public void EmpezarEsfuerzo()
+        {
+            EnEsfuerzo = true;
+            AnimandoTiro = false;
+        }
+
+        public void Resetear()
+        {
+            EnEsfuerzo = false;
+            AnimandoTiro = false;
+            FrameActual = 0;
+        }
+
+        public void Update(GameTime gameTime)
+        {
             tiempoFrame += gameTime.ElapsedGameTime.TotalSeconds;
 
-            // animacion de tirar la caña
-            if (animandoTiro)
-            {
-                // si paso suficiente tiempo, avanza al siguiente frame
-                if (tiempoFrame >= duracionFrame)
-                {
-                    frameActual++;
-                    tiempoFrame = 0;
-
-                    // si llego al final, cambia al estado de esfuerzo
-                    if (frameActual >= 3)
-                    {
-                        frameActual = 0;
-                        animandoTiro = false;
-                        enEsfuerzo = true;
-                    }
-                }
-            }
-            // animacion de recoger (va en orden inverso)
-            else if (animandoRetiro)
+            if (AnimandoTiro)
             {
                 if (tiempoFrame >= duracionFrame)
                 {
-                    frameActual--;
+                    FrameActual++;
                     tiempoFrame = 0;
-
-                    // si llego al primer frame, vuelve al estado base
-                    if (frameActual < 0)
+                    if (FrameActual >= 3)
                     {
-                        frameActual = 0;
-                        animandoRetiro = false;
-                        enEsfuerzo = false;
+                        FrameActual = 3; // Se queda en la pose final de tiro
                     }
                 }
             }
-            // animacion de esfuerzo (bucle)
-            else if (enEsfuerzo)
+            else if (EnEsfuerzo)
             {
-                // se mueve mas lento que las otras
+                // Animación de esfuerzo (bucle)
                 if (tiempoFrame >= duracionFrame * 4)
                 {
-                    frameActual++;
+                    FrameActual++;
                     tiempoFrame = 0;
-
-                    // cicla entre frame 1 y 2
-                    if (frameActual > 2)
-                        frameActual = 1;
+                    if (FrameActual > 2) FrameActual = 1; 
                 }
+            }
+            else
+            {
+                FrameActual = 0; // Estado idle
             }
         }
 
-        // dibuja al pescador en pantalla
         public void Draw(SpriteBatch spriteBatch)
         {
-            // elige el sprite segun el estado
-            Texture2D spriteActual = enEsfuerzo ? rojoEsfuerzoCaña : rojoTirarCaña;
+            Texture2D spriteActual = EnEsfuerzo ? rojoEsfuerzoCaña : rojoTirarCaña;
+            
+            // Define el frame actual (asumiendo frames de 30x40 píxeles)
+            Rectangle sourceRect = new Rectangle(FrameActual * 30, 0, 30, 40);
 
-            // define el area de la imagen que se va a mostrar (cada frame mide 30x40)
-            Rectangle sourceRect = new Rectangle(frameActual * 30, 0, 30, 40);
-
-            // dibuja el sprite en su posicion, con escala 3x
-            spriteBatch.Draw(spriteActual, posicion, sourceRect, Color.White, 0f, Vector2.Zero, 3f, SpriteEffects.None, 0f);
+            // Escala 3x
+            spriteBatch.Draw(spriteActual, Posicion, sourceRect, Color.White, 0f, Vector2.Zero, 3f, SpriteEffects.None, 0f);
         }
     }
 }

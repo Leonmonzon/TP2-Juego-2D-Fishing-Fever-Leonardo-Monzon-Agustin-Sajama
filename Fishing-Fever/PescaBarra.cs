@@ -1,141 +1,210 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Fishing_Fever
 {
+    // Clase que representa el minijuego de la barra de pesca
     public class PescaBarra
     {
-        // Texturas básicas
-        private Texture2D texturaFondo;
-        private Texture2D texturaBarra;
-        private Texture2D texturaPez;
+        // Dimensiones de la barra (constantes)
+        private const int ALTURA_BARRA = 300;
+        private const int ANCHO_BARRA = 20;
 
-        // Posiciones y tamaños
-        private Rectangle rectFondo;
-        private Rectangle rectBarra;
-        private Rectangle rectPez;
+        // Propiedades de la Barra
+        private Texture2D texturaFondo;         // Fondo (Gris)
+        private Texture2D texturaIndicador;     // Indicador del Jugador (Blanco/Rojo)
+        private Texture2D texturaZonaObjetivo;  // Zona Verde del Pez
 
-        // Movimiento de la barra
-        private float velocidadBarra = 200f;
-        private float posicionBarra;
-        private bool subiendo;
+        private Vector2 posicion;
+        private bool activa = false;
 
-        // Movimiento del pez
-        private float posicionPez;
-        private float tiempoCambioPez;
-        private float tiempoAcumulado;
+        // Lógica del Indicador del Jugador (Valores Ajustados)
+        private float indicadorY; 
+        private float velocidadIndicador;
+        private float gravedad = 1100f; // Fuerza para caer (Ajustado: más firme)
+        private float fuerzaImpulso = 300f; // Fuerza para subir con el clic (Ajustado: menos fuerza = menos salto)
+        private int alturaIndicador = 30; // Altura del bloque del jugador
 
-        // Estado general
-        private bool activo;
-        private double progreso;  // cuánto llevamos pescando
-        private double progresoObjetivo = 5; // segundos para "ganar"
+        // Lógica de la Zona Objetivo del Pez (Zona Verde)
+        private float zonaObjetivoY; 
+        private float velocidadZona = 100f; // Velocidad con la que se mueve la zona verde
+        private int alturaZona = 60; // Altura del bloque verde del pez
 
-        public bool PescaCompletada { get; private set; }
+        // Progreso del Minijuego
+        private float progresoActual = 0f; // 0.0 a 1.0 (0% a 100%)
+        private const float PROGRESO_GANAR = 1.0f;
+        private const float PROGRESO_PERDER_FUERA_ZONA = 0.1f; // Tasa de pérdida si estás fuera de la zona
 
-        public PescaBarra(GraphicsDevice graphicsDevice, Vector2 posicion)
+        public bool PescaCompletada { get; private set; } = false;
+
+        private MouseState mouseAnterior;
+
+        public PescaBarra(GraphicsDevice graphicsDevice, Vector2 pos)
         {
-            // Crear texturas simples de color sólido
-            texturaFondo = new Texture2D(graphicsDevice, 1, 1);
-            texturaFondo.SetData(new[] { Color.Gray });
+            posicion = pos;
+            
+            // 1. Crear Texturas
+            // Fondo (Barra Gris)
+            texturaFondo = new Texture2D(graphicsDevice, ANCHO_BARRA, ALTURA_BARRA);
+            Color[] dataFondo = new Color[ANCHO_BARRA * ALTURA_BARRA];
+            for (int i = 0; i < dataFondo.Length; ++i) dataFondo[i] = Color.Gray * 0.7f;
+            texturaFondo.SetData(dataFondo);
 
-            texturaBarra = new Texture2D(graphicsDevice, 1, 1);
-            texturaBarra.SetData(new[] { Color.Green });
+            // Indicador del Jugador (Blanco)
+            texturaIndicador = new Texture2D(graphicsDevice, ANCHO_BARRA, alturaIndicador);
+            Color[] dataIndicador = new Color[ANCHO_BARRA * alturaIndicador];
+            for (int i = 0; i < dataIndicador.Length; ++i) dataIndicador[i] = Color.White;
+            texturaIndicador.SetData(dataIndicador);
 
-            texturaPez = new Texture2D(graphicsDevice, 1, 1);
-            texturaPez.SetData(new[] { Color.Yellow });
-
-            rectFondo = new Rectangle((int)posicion.X, (int)posicion.Y, 40, 200);
-            rectBarra = new Rectangle(rectFondo.X, rectFondo.Bottom - 50, 40, 50);
-            rectPez = new Rectangle(rectFondo.X, rectFondo.Y + 100, 40, 20);
-
-            posicionBarra = rectBarra.Y;
-            posicionPez = rectPez.Y;
-
-            activo = false;
+            // Zona Objetivo (Verde)
+            texturaZonaObjetivo = new Texture2D(graphicsDevice, ANCHO_BARRA, alturaZona);
+            Color[] dataZona = new Color[ANCHO_BARRA * alturaZona];
+            for (int i = 0; i < dataZona.Length; ++i) dataZona[i] = Color.LimeGreen * 0.8f;
+            texturaZonaObjetivo.SetData(dataZona);
         }
 
-        // Activa la barra cuando se tira la caña
         public void Activar()
         {
-            activo = true;
+            activa = true;
             PescaCompletada = false;
-            progreso = 0;
-            posicionBarra = rectFondo.Bottom - rectBarra.Height;
-            subiendo = false;
-            posicionPez = rectFondo.Y + rectFondo.Height / 2;
-            tiempoCambioPez = 1f;
-            tiempoAcumulado = 0;
+            progresoActual = 0f;
+            
+            // Inicializar posición del jugador y de la zona objetivo
+            indicadorY = ALTURA_BARRA / 2f; 
+            zonaObjetivoY = ALTURA_BARRA / 2f; 
+            velocidadIndicador = 0f;
         }
 
-        // Actualiza la lógica de la barra y el pez
+        public bool EstaActiva() => activa;
+
         public void Actualizar(GameTime gameTime)
         {
-            if (!activo) return;
+            if (!activa) return;
 
-            var teclado = Keyboard.GetState();
             float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            MouseState mouseActual = Mouse.GetState();
 
-            // Movimiento manual de la barra con espacio o clic sostenido
-            var raton = Mouse.GetState();
-            if (teclado.IsKeyDown(Keys.Space) || raton.LeftButton == ButtonState.Pressed)
-                subiendo = true;
-            else
-                subiendo = false;
-
-            // Movimiento de la barra verde
-            if (subiendo)
-                posicionBarra -= velocidadBarra * delta;
-            else
-                posicionBarra += velocidadBarra * delta;
-
-            // Limita dentro del fondo
-            posicionBarra = MathHelper.Clamp(posicionBarra, rectFondo.Y, rectFondo.Bottom - rectBarra.Height);
-            rectBarra.Y = (int)posicionBarra;
-
-            // Movimiento del pez (aleatorio cada cierto tiempo)
-            tiempoAcumulado += delta;
-            if (tiempoAcumulado >= tiempoCambioPez)
+            // --------------------
+            // 1. Lógica del Indicador del Jugador (Gravedad y Control)
+            // --------------------
+            
+            // Aplicar Impulso si se hace clic
+            if (mouseActual.LeftButton == ButtonState.Pressed)
             {
-                tiempoAcumulado = 0;
-                tiempoCambioPez = 0.5f + (float)new System.Random().NextDouble() * 1.5f;
-                posicionPez += (float)(new System.Random().NextDouble() * 100 - 50);
+                // Aplica el impulso reducido
+                velocidadIndicador = -fuerzaImpulso; 
             }
 
-            // Limitar al fondo
-            posicionPez = MathHelper.Clamp(posicionPez, rectFondo.Y, rectFondo.Bottom - rectPez.Height);
-            rectPez.Y = (int)posicionPez;
+            // Aplicar Gravedad
+            velocidadIndicador += gravedad * delta;
+            indicadorY += velocidadIndicador * delta;
 
-            // Si la barra verde está sobre el pez, sumamos progreso
-            if (rectBarra.Intersects(rectPez))
-                progreso += delta;
+            // Restringir el indicador a los límites de la barra
+            if (indicadorY < 0)
+            {
+                indicadorY = 0;
+                velocidadIndicador = 0;
+            }
+            if (indicadorY > ALTURA_BARRA - alturaIndicador)
+            {
+                indicadorY = ALTURA_BARRA - alturaIndicador;
+                velocidadIndicador = 0;
+            }
+            
+            // --------------------
+            // 2. Lógica de la Zona Objetivo (Pez)
+            // --------------------
+            
+            zonaObjetivoY += velocidadZona * delta;
+
+            // Invertir dirección si la zona choca con los bordes
+            if (zonaObjetivoY < 0 || zonaObjetivoY > ALTURA_BARRA - alturaZona)
+            {
+                velocidadZona *= -1;
+                // Ajustar ligeramente la posición para evitar que se pegue al borde
+                zonaObjetivoY = MathHelper.Clamp(zonaObjetivoY, 0, ALTURA_BARRA - alturaZona);
+            }
+            
+            // --------------------
+            // 3. Lógica del Progreso
+            // --------------------
+            
+            // Calcular si el indicador del jugador está DENTRO de la zona objetivo
+            bool estaEnZona = 
+                indicadorY >= zonaObjetivoY && 
+                indicadorY + alturaIndicador <= zonaObjetivoY + alturaZona;
+
+            if (estaEnZona)
+            {
+                // Aumentar el progreso
+                progresoActual += delta * 0.3f; 
+            }
             else
-                progreso -= delta * 0.5f; // castigo si no lo seguimos
+            {
+                // Disminuir el progreso
+                progresoActual -= delta * PROGRESO_PERDER_FUERA_ZONA;
+            }
 
-            progreso = MathHelper.Clamp((float)progreso, 0, (float)progresoObjetivo);
+            // Asegurar que el progreso se mantenga entre 0 y 1
+            progresoActual = MathHelper.Clamp(progresoActual, 0f, PROGRESO_GANAR);
 
-            // Si llegamos al objetivo => pesca completada
-            if (progreso >= progresoObjetivo)
+            // --------------------
+            // 4. Chequeo de Victoria/Derrota
+            // --------------------
+
+            if (progresoActual >= PROGRESO_GANAR)
             {
                 PescaCompletada = true;
-                activo = false;
+                activa = false;
             }
+            
+            mouseAnterior = mouseActual;
         }
 
-        // Dibuja la barra y el pez
         public void Dibujar(SpriteBatch spriteBatch)
         {
-            if (!activo && !PescaCompletada) return;
+            if (!activa) return;
 
-            spriteBatch.Draw(texturaFondo, rectFondo, Color.DarkSlateGray);
-            spriteBatch.Draw(texturaPez, rectPez, Color.Yellow);
-            spriteBatch.Draw(texturaBarra, rectBarra, Color.Green);
+            // Posición base de la barra en la pantalla
+            Vector2 posPantalla = posicion;
+            
+            // 1. Dibuja el Fondo de la Barra (Gris)
+            spriteBatch.Draw(texturaFondo, posPantalla, Color.White);
 
-            // Si completamos, mostrar barra dorada
-            if (PescaCompletada)
-                spriteBatch.Draw(texturaFondo, rectFondo, Color.Gold);
+            // 2. Dibuja la Zona Objetivo (Verde)
+            Vector2 posZona = new Vector2(posPantalla.X, posPantalla.Y + zonaObjetivoY);
+            spriteBatch.Draw(texturaZonaObjetivo, posZona, Color.White);
+
+            // 3. Dibuja el Indicador del Jugador (Blanco)
+            Vector2 posIndicador = new Vector2(posPantalla.X, posPantalla.Y + indicadorY);
+            
+            // Si está fuera de la zona, el indicador se pone rojo para feedback
+            Color colorIndicador = (PescaCompletada || (indicadorY >= zonaObjetivoY && indicadorY + alturaIndicador <= zonaObjetivoY + alturaZona)) 
+                                    ? Color.White 
+                                    : Color.Red;
+
+            spriteBatch.Draw(texturaIndicador, posIndicador, colorIndicador);
+
+            // 4. Dibuja la Barra de Progreso (al lado de la barra principal)
+            
+            // Usaremos el fondo gris como "fondo" para el progreso
+            Vector2 posProgresoBase = posPantalla + new Vector2(ANCHO_BARRA + 5, 0);
+            spriteBatch.Draw(texturaFondo, posProgresoBase, Color.Black * 0.5f); // Fondo de progreso (Negro semi-transparente)
+
+            // Indicador de Progreso (Amarillo)
+            float alturaProgreso = ALTURA_BARRA * progresoActual;
+            Rectangle rectProgreso = new Rectangle(
+                (int)posProgresoBase.X, 
+                (int)(posProgresoBase.Y + ALTURA_BARRA - alturaProgreso), // Dibuja desde abajo
+                ANCHO_BARRA, 
+                (int)alturaProgreso
+            );
+            // El color cambia a verde cuando está cerca de ganar
+            Color colorProgreso = Color.Lerp(Color.Yellow, Color.ForestGreen, progresoActual);
+            
+            spriteBatch.Draw(texturaFondo, rectProgreso, colorProgreso);
         }
-
-        public bool EstaActiva() => activo;
     }
 }
