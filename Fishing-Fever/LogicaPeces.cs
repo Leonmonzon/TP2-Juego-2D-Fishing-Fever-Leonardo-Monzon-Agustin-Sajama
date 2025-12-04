@@ -30,7 +30,7 @@ namespace Fishing_Fever
 
             // --- LISTA DE PECES A CARGAR ---
             // IMPORTANTE: Asegúrate de que estos archivos existan en Content/Images/
-            string[] nombresDePeces = { "pez Alga", "Pez burbuja", "Pez luna" }; 
+            string[] nombresDePeces = { "Pez alga", "Pez burbuja", "Pez luna", "Pez cuchillo", "Pez fantasma", "Pez piedra", "Pez rayo", "Tiburon martillo" }; 
             
             // Cargar cada textura y añadirla a la lista
             foreach (string nombre in nombresDePeces)

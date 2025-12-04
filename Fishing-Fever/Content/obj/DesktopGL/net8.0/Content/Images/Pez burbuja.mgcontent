@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>c:/Users/Agustin/Downloads/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/Pez burbuja.png</SourceFile>
-  <SourceTime>2025-11-27T00:23:42-03:00</SourceTime>
-  <DestFile>c:/Users/Agustin/Downloads/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/bin/DesktopGL/Content/Images/Pez burbuja.xnb</DestFile>
-  <DestTime>2025-12-03T20:01:15.0895105-03:00</DestTime>
+  <SourceFile>c:/Users/Agustin/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Pez burbuja.png</SourceFile>
+  <SourceTime>2025-11-27T06:41:52.3838633-03:00</SourceTime>
+  <DestFile>c:/Users/Agustin/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/bin/DesktopGL/Content/Images/Pez burbuja.xnb</DestFile>
+  <DestTime>2025-12-03T20:50:01.7062968-03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2025-06-02T07:31:02-03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

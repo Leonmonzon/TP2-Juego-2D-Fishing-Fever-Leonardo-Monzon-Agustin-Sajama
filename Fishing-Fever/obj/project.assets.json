@@ -300,11 +300,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Agustin\\Downloads\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev\\Fishing-Fever\\Fishing-Fever.csproj",
+      "projectUniqueName": "C:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj",
       "projectName": "Fishing-Fever",
-      "projectPath": "C:\\Users\\Agustin\\Downloads\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev\\Fishing-Fever\\Fishing-Fever.csproj",
+      "projectPath": "C:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj",
       "packagesPath": "C:\\Users\\Agustin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Agustin\\Downloads\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev\\Fishing-Fever\\obj\\",
+      "outputPath": "C:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Agustin\\AppData\\Roaming\\NuGet\\NuGet.Config"

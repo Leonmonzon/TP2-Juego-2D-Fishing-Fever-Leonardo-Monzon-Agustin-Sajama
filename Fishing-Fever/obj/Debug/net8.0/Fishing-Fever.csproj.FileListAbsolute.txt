@@ -248,3 +248,50 @@ c:\Users\Agustin\Downloads\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sa
 c:\Users\Agustin\Downloads\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.pdb
 c:\Users\Agustin\Downloads\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.genruntimeconfig.cache
 c:\Users\Agustin\Downloads\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev\Fishing-Fever\obj\Debug\net8.0\ref\Fishing-Fever.dll
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\basePescador.xnb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\fondo.xnb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\Pez burbuja.xnb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\Pez cuchillo.xnb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\Pez fantasma.xnb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\Pez luna.xnb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\Pez piedra.xnb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\Pez rayo.xnb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\portada.xnb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\rojoEsfuerzoCaña.xnb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\rojoTirarCaña.xnb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Fishing-Fever.exe
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Fishing-Fever.deps.json
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Fishing-Fever.runtimeconfig.json
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Fishing-Fever.dll
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Fishing-Fever.pdb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\MonoGame.Framework.dll
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\NVorbis.dll
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\android-arm\native\libopenal.so
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\android-arm64\native\libopenal.so
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\android-x64\native\libopenal.so
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\android-x86\native\libopenal.so
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\ios-arm64\native\libopenal.a
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\iossimulator-arm64\native\libopenal.a
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\iossimulator-x64\native\libopenal.a
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\linux-arm64\native\libopenal.so
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\linux-x64\native\libopenal.so
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\osx\native\libopenal.dylib
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\win-x64\native\openal.dll
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\osx\native\libSDL2-2.0.0.dylib
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\runtimes\win-x64\native\SDL2.dll
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\mgcb.tool.restore
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.csproj.AssemblyReference.cache
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.AssemblyInfoInputs.cache
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.AssemblyInfo.cs
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.csproj.CoreCompileInputs.cache
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.sourcelink.json
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\Fishing-.36471EC9.Up2Date
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.dll
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\refint\Fishing-Fever.dll
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.pdb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\Fishing-Fever.genruntimeconfig.cache
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\obj\Debug\net8.0\ref\Fishing-Fever.dll
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\Pez alga.xnb
+c:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\Images\Tiburon martillo.xnb
