@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj": {}
+    "C:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj": {
+    "C:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj",
+        "projectUniqueName": "C:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj",
         "projectName": "Fishing-Fever",
-        "projectPath": "c:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj",
+        "projectPath": "C:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj",
         "packagesPath": "C:\\Users\\Agustin\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\obj\\",
+        "outputPath": "C:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Agustin\\AppData\\Roaming\\NuGet\\NuGet.Config"
