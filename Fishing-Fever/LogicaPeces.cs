@@ -68,7 +68,7 @@ namespace Fishing_Fever
         public void EsconderPez()
         {
             pezAtrapado = false;
-            tiempoVisible = 0f;
+            tiempoVisible =0f;
             pezActual = null; // Opcional: Liberar la referencia
         }
 

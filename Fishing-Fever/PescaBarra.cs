@@ -24,8 +24,8 @@ namespace Fishing_Fever
         private float indicadorY; 
         private float velocidadIndicador;
         private float gravedad = 1100f; // Fuerza para caer (Ajustado: más firme)
-        private float fuerzaImpulso = 300f; // Fuerza para subir con el clic (Ajustado: menos fuerza = menos salto)
-        private int alturaIndicador = 30; // Altura del bloque del jugador
+        private float fuerzaImpulso = 200f; // Fuerza para subir con el clic (Ajustado: menos fuerza = menos salto)
+        private int alturaIndicador = 15; // Altura del bloque del jugador
 
         // Lógica de la Zona Objetivo del Pez (Zona Verde)
         private float zonaObjetivoY; 
