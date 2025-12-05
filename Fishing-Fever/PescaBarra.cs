@@ -20,12 +20,13 @@ namespace Fishing_Fever
         private Vector2 posicion;
         private bool activa = false;
 
-        // Lógica del Indicador del Jugador (Valores Ajustados)
+        // Lógica del Indicador del Jugador (Valores Ajustados para menos rebote)
         private float indicadorY; 
         private float velocidadIndicador;
-        private float gravedad = 1100f; // Fuerza para caer (Ajustado: más firme)
-        private float fuerzaImpulso = 200f; // Fuerza para subir con el clic (Ajustado: menos fuerza = menos salto)
-        private int alturaIndicador = 15; // Altura del bloque del jugador
+        private float gravedad = 1300f; // AUMENTADO: Cae más rápido y se siente menos flotante
+        private float fuerzaImpulso = 200f; // REDUCIDO: Salta menos con el clic
+        private float maxVelocidad = 700f; // NUEVO: Velocidad máxima para evitar rebotes exagerados
+        private int alturaIndicador = 30; // Altura del bloque del jugador
 
         // Lógica de la Zona Objetivo del Pez (Zona Verde)
         private float zonaObjetivoY; 
@@ -99,6 +100,10 @@ namespace Fishing_Fever
 
             // Aplicar Gravedad
             velocidadIndicador += gravedad * delta;
+
+            // Limitar velocidad para evitar movimientos demasiado bruscos (el rebote)
+            velocidadIndicador = MathHelper.Clamp(velocidadIndicador, -maxVelocidad, maxVelocidad);
+
             indicadorY += velocidadIndicador * delta;
 
             // Restringir el indicador a los límites de la barra

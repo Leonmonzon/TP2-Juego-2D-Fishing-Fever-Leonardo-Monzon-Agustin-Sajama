@@ -11,7 +11,7 @@ namespace Fishing_Fever
     public class Game1 : Game
     {
         // AJUSTA ESTE VALOR: Coordenada Y donde el anzuelo debe flotar (Nivel del Agua)
-        private const float NIVEL_AGUA = 380f; 
+        private const float NIVEL_AGUA = 475f; 
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -49,7 +49,6 @@ namespace Fishing_Fever
             pixelTexture.SetData(new[] { Color.White });
 
             // 2. Carga de Assets y Clases
-            // Asegúrate que 'fondo.png' existe en Content/Images/
             fondo = Content.Load<Texture2D>("Images/fondo");
             
             // Inicialización de las CLASES (Objetos)
@@ -58,15 +57,14 @@ namespace Fishing_Fever
             barraPesca = new PescaBarra(GraphicsDevice, new Vector2(700, 200));
 
             // Posicion del pescador
-            // Usamos la posición ajustada
             Vector2 posPescador = new Vector2(
-                (_graphics.PreferredBackBufferWidth / 2) + 75 - 15, 
-                (_graphics.PreferredBackBufferHeight / 2) - 27
+                (_graphics.PreferredBackBufferWidth / 2) + 75 - 5, 
+                // Ajuste de posición Y para que no flote
+                (_graphics.PreferredBackBufferHeight / 2) - 27 + 25f 
             );
-            // NOTA: ASUMIMOS QUE LA CLASE PESCADOR.CS EXISTE
             pescador = new Pescador(Content, posPescador);
 
-            // 3. Inicializamos el anzuelo (Ahora la clase Anzuelo existe)
+            // 3. Inicializamos el anzuelo
             anzuelo = new Anzuelo(pixelTexture, NIVEL_AGUA);
         }
 
@@ -76,7 +74,7 @@ namespace Fishing_Fever
 
             MouseState mouseActual = Mouse.GetState();
 
-            // [CRÍTICO] El temporizador del pez DEBE correr siempre.
+            // El temporizador del pez DEBE correr siempre.
             logicaPeces.Update(gameTime); 
 
             // Detecta un nuevo clic (presionado ahora, pero no en el frame anterior)
@@ -92,7 +90,6 @@ namespace Fishing_Fever
                 {
                     // ¡Pesca completada! Muestra el pez y resetea el ciclo de pesca
                     logicaPeces.MostrarPez();
-                    // ASUMIMOS QUE ESTOS MÉTODOS EXISTEN EN PESCADOR Y ANZUELO
                     pescador.Resetear(); 
                     anzuelo.Resetear(); 
                 }
@@ -100,7 +97,6 @@ namespace Fishing_Fever
             // 2. Lógica de Pesca Normal (Solo si el minijuego NO está activo)
             else
             {
-                // ASUMIMOS QUE ESTOS MÉTODOS EXISTEN EN PESCADOR Y ANZUELO
                 pescador.Update(gameTime);
                 anzuelo.Update(gameTime);
 
@@ -115,8 +111,9 @@ namespace Fishing_Fever
                 // Caso B: Ejecutar Lanzamiento físico (Cuando la animación del pescador lo permite)
                 if (anzuelo.Estado == EstadoAnzuelo.Listo && pescador.AnimandoTiro && pescador.FrameActual >= 2)
                 {
-                    Vector2 puntaCaña = pescador.Posicion + new Vector2(80, 20); 
-                    anzuelo.Lanzar(puntaCaña, new Vector2(-250f, -300f));
+                    // Punto de origen de la línea para el lanzamiento. Usamos el punto normal.
+                    Vector2 puntaCaña = pescador.Posicion + new Vector2(80, 60); 
+                    anzuelo.Lanzar(puntaCaña, new Vector2(-300f, -300f));
                     pescador.AnimandoTiro = false; 
                 }
 
@@ -124,7 +121,7 @@ namespace Fishing_Fever
                 else if (anzuelo.Estado == EstadoAnzuelo.Pico && clickIzquierdo)
                 {
                     barraPesca.Activar(); 
-                    pescador.EmpezarEsfuerzo(); 
+                    pescador.EmpezarEsfuerzo(); // Activa la animación de esfuerzo
                 }
 
                 // Caso D: Recoger línea (si está volando o esperando) y Clic
@@ -162,13 +159,30 @@ namespace Fishing_Fever
             // 2. Dibujar la línea de pesca si está lanzada
             if (anzuelo.Estado != EstadoAnzuelo.Listo)
             {
-                Vector2 origenLinea = pescador.Posicion + new Vector2(80, 20);
+                // Definir los puntos de la caña:
+                Vector2 ajusteNormal = new Vector2(10, 50);    // Posición de la caña cuando espera
+                Vector2 ajusteEsfuerzo = new Vector2(15, 10);  // Posición de la caña cuando tira hacia atrás
+
+                Vector2 origenLinea;
+                
+                // Si la barra de pesca está activa, el pescador está "tirando de la caña" (animación de esfuerzo)
+                if (barraPesca.EstaActiva())
+                {
+                    // Usar el punto ajustado para la animación de esfuerzo
+                    origenLinea = pescador.Posicion + ajusteEsfuerzo;
+                }
+                else
+                {
+                    // Usar el punto normal para esperar o volar
+                    origenLinea = pescador.Posicion + ajusteNormal;
+                }
+
                 DrawLine(_spriteBatch, origenLinea, anzuelo.Posicion, Color.Black, 1);
             }
 
             // 3. Entidades
             pescador.Draw(_spriteBatch);
-            anzuelo.Draw(_spriteBatch, gameTime); // Pasamos gameTime para el parpadeo del anzuelo
+            anzuelo.Draw(_spriteBatch, gameTime); 
 
             // 4. UI y Minijuego
             barraPesca.Dibujar(_spriteBatch);
