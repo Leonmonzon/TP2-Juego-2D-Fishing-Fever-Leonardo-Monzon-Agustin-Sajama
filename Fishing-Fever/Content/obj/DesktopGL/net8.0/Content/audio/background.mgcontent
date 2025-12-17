@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/audio/background.mp3</SourceFile>
+  <SourceTime>2025-12-17T15:16:34.3568085-03:00</SourceTime>
+  <DestFile>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/bin/DesktopGL/Content/audio/background.xnb</DestFile>
+  <DestTime>2025-12-17T15:26:52.5813615-03:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2025-06-02T07:31:02-03:00</ImporterTime>
+  <Processor>SongProcessor</Processor>
+  <ProcessorTime>2025-06-02T07:31:02-03:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput>
+    <string>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/bin/DesktopGL/Content/audio/background.ogg</string>
+  </BuildOutput>
+</PipelineBuildEvent>

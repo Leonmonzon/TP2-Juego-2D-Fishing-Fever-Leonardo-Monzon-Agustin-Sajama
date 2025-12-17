@@ -13,6 +13,12 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin audio/background.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/background.mp3;audio/musicaJuego.mp3
+
 #begin Images/Base pescador.png
 /importer:TextureImporter
 /processor:TextureProcessor

@@ -4,21 +4,23 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/Base pescador.png</File>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/Fondo.png</File>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/Pez alga.png</File>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/Pez burbuja.png</File>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/Pez cuchillo.png</File>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/Pez fantasma.png</File>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/Pez luna.png</File>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/Pez piedra.png</File>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/Pez rayo.png</File>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/portada.png</File>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/rojoEsfuerzoCaña.png</File>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/rojoTirarCaña.png</File>
-    <File>C:/Users/Alumno/Documents/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama-dev/Fishing-Fever/Content/Images/Tiburon martillo.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/audio/background.mp3</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Base pescador.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Fondo.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Pez alga.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Pez burbuja.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Pez cuchillo.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Pez fantasma.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Pez luna.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Pez piedra.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Pez rayo.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/portada.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/rojoEsfuerzoCaña.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/rojoTirarCaña.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Tiburon martillo.png</File>
   </SourceFiles>
   <DestFiles>
+    <File>audio/musicaJuego.mp3</File>
     <File>Images/basePescador.png</File>
     <File>Images/fondo.png</File>
     <File xsi:nil="true" />
