@@ -13,11 +13,17 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin audio/background.mp3
+#begin audio/musicaIntro.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:audio/background.mp3;audio/musicaJuego.mp3
+/build:audio/musicaIntro.mp3
+
+#begin audio/musicaJuego.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/musicaJuego.mp3
 
 #begin Images/Base pescador.png
 /importer:TextureImporter
@@ -175,3 +181,7 @@
 /processorParam:TextureFormat=Color
 /build:Images/Tiburon martillo.png
 
+#begin Fonts/fuente.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/build:fonts/fuente.spritefont

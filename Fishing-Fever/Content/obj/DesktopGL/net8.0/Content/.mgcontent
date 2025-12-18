@@ -4,7 +4,8 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/audio/background.mp3</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/audio/musicaIntro.mp3</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/audio/musicaJuego.mp3</File>
     <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Base pescador.png</File>
     <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Fondo.png</File>
     <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Pez alga.png</File>
@@ -18,11 +19,14 @@
     <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/rojoEsfuerzoCaña.png</File>
     <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/rojoTirarCaña.png</File>
     <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/Images/Tiburon martillo.png</File>
+    <File>C:/Users/Schwömpf/Documents/fishing fever/TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama/Fishing-Fever/Content/fonts/fuente.spritefont</File>
   </SourceFiles>
   <DestFiles>
-    <File>audio/musicaJuego.mp3</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>Images/basePescador.png</File>
     <File>Images/fondo.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

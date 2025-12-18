@@ -11,11 +11,5 @@ internal static class Program
         {
             intro.Run();
         }
-
-        // 2. Una vez que la intro se cierra (llama a Exit()), arrancamos el juego principal
-        using (var juego = new Game1())
-        {
-            juego.Run();
-        }
     }
 }
