@@ -350,3 +350,10 @@ C:\Users\Schwömpf\Documents\fishing fever\TP2-Juego-2D-Fishing-Fever-Leonardo-M
 C:\Users\Schwömpf\Documents\fishing fever\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\audio\musicaIntro.ogg
 C:\Users\Schwömpf\Documents\fishing fever\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\audio\musicaIntro.xnb
 C:\Users\Schwömpf\Documents\fishing fever\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\fonts\fuente.xnb
+C:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\audio\background.ogg
+C:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\audio\background.xnb
+C:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\audio\musicaIntro.ogg
+C:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\audio\musicaIntro.xnb
+C:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\audio\musicaJuego.ogg
+C:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\audio\musicaJuego.xnb
+C:\Users\Agustin\Documents\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\Fishing-Fever\bin\Debug\net8.0\Content\fonts\fuente.xnb

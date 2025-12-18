@@ -295,24 +295,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Schwömpf\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Agustin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Schwömpf\\Documents\\fishing fever\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj",
+      "projectUniqueName": "C:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj",
       "projectName": "Fishing-Fever",
-      "projectPath": "C:\\Users\\Schwömpf\\Documents\\fishing fever\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj",
-      "packagesPath": "C:\\Users\\Schwömpf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Schwömpf\\Documents\\fishing fever\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\obj\\",
+      "projectPath": "C:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\Fishing-Fever.csproj",
+      "packagesPath": "C:\\Users\\Agustin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Agustin\\Documents\\TP2-Juego-2D-Fishing-Fever-Leonardo-Monzon-Agustin-Sajama\\Fishing-Fever\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Schwömpf\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Agustin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -364,30 +359,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[8.0.22, 8.0.22]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
