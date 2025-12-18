@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Fishing_Fever
 {
-    public enum GameState { Jugando, Pausado }
+    public enum GameState { Jugando, Pausado, GameOver }
 
     public class Game1 : Game
     {
@@ -42,12 +42,14 @@ namespace Fishing_Fever
         private const float NIVEL_AGUA = 475f;
 
         private Rectangle btnReanudar, btnVolumen, btnMenuPrincipal, btnSalir;
+        private Rectangle btnReiniciar, btnSalirGameOver;
 
         private bool esperandoDespuesCaptura = false;
         private float tiempoEsperaCaptura = 0f;
         private const float DELAY_CAPTURA = 2.0f; // 2 seconds delay
 
         private int score = 0;
+        private float gameTimer = 30f; // 20 seconds countdown
 
         public Game1()
         {
@@ -62,6 +64,7 @@ namespace Fishing_Fever
         protected override void Initialize()
         {
             ConfigurarBotonesPausa();
+            ConfigurarBotonesGameOver();
             base.Initialize();
         }
 
@@ -101,6 +104,19 @@ namespace Fishing_Fever
             btnSalir = new Rectangle(centerX, startY + 225, btnW, btnH);
         }
 
+        private void ConfigurarBotonesGameOver()
+        {
+            int w = _graphics.PreferredBackBufferWidth;
+            int h = _graphics.PreferredBackBufferHeight;
+            int btnW = 280;
+            int btnH = 55;
+            int centerX = (w / 2) - (btnW / 2);
+            int startY = h / 2 + 50;
+
+            btnReiniciar = new Rectangle(centerX, startY, btnW, btnH);
+            btnSalirGameOver = new Rectangle(centerX, startY + 75, btnW, btnH);
+        }
+
         protected override void Update(GameTime gameTime)
         {
             estadoTecladoActual = Keyboard.GetState();
@@ -112,8 +128,10 @@ namespace Fishing_Fever
 
             if (estadoActual == GameState.Jugando)
                 ActualizarLogicaJuego(gameTime, mouseActual, click);
-            else
+            else if (estadoActual == GameState.Pausado)
                 ActualizarMenuPausa(mouseActual, click);
+            else if (estadoActual == GameState.GameOver)
+                ActualizarMenuGameOver(mouseActual, click);
 
             estadoTecladoAnterior = estadoTecladoActual;
             mouseAnterior = mouseActual;
@@ -122,6 +140,13 @@ namespace Fishing_Fever
 
         private void ActualizarLogicaJuego(GameTime gameTime, MouseState mouseActual, bool click)
         {
+            gameTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (gameTimer <= 0)
+            {
+                estadoActual = GameState.GameOver;
+                return;
+            }
+
             if (!musicaIniciada)
             {
                 MediaPlayer.IsRepeating = true;
@@ -198,6 +223,15 @@ namespace Fishing_Fever
             }
         }
 
+        private void ActualizarMenuGameOver(MouseState mouse, bool click)
+        {
+            if (click)
+            {
+                if (btnReiniciar.Contains(mouse.Position)) { Process.Start(Process.GetCurrentProcess().MainModule.FileName); Exit(); }
+                if (btnSalirGameOver.Contains(mouse.Position)) Exit();
+            }
+        }
+
         protected override void Draw(GameTime gameTime)
         {
             _spriteBatch.Begin();
@@ -212,6 +246,13 @@ namespace Fishing_Fever
             Vector2 scorePos = new Vector2(800 - fuente.MeasureString(scoreText).X - 10, 10);
             _spriteBatch.DrawString(fuente, scoreText, scorePos, Color.White);
 
+            if (estadoActual == GameState.Jugando)
+            {
+                string timerText = "Time: " + Math.Max(0, (int)gameTimer);
+                Vector2 timerPos = new Vector2(10, 10);
+                _spriteBatch.DrawString(fuente, timerText, timerPos, Color.White);
+            }
+
             if (estadoActual == GameState.Pausado)
             {
                 _spriteBatch.Draw(pixelTexture, new Rectangle(0, 0, 800, 600), Color.Black * 0.5f);
@@ -220,6 +261,21 @@ namespace Fishing_Fever
                 DibujarBotonEstetico(btnVolumen, "SONIDO: " + NombresVolumen[IndiceVolumen], ms);
                 DibujarBotonEstetico(btnMenuPrincipal, "MENU PRINCIPAL", ms);
                 DibujarBotonEstetico(btnSalir, "SALIR", ms);
+            }
+            else if (estadoActual == GameState.GameOver)
+            {
+                _spriteBatch.Draw(pixelTexture, new Rectangle(0, 0, 800, 600), Color.Black * 0.7f);
+                string gameOverText = "GAME OVER";
+                Vector2 goPos = new Vector2(400 - fuente.MeasureString(gameOverText).X / 2, 200);
+                _spriteBatch.DrawString(fuente, gameOverText, goPos, Color.Red);
+
+                string finalScoreText = "Final Score: " + score;
+                Vector2 fsPos = new Vector2(400 - fuente.MeasureString(finalScoreText).X / 2, 250);
+                _spriteBatch.DrawString(fuente, finalScoreText, fsPos, Color.White);
+
+                MouseState ms = Mouse.GetState();
+                DibujarBotonEstetico(btnReiniciar, "REINICIAR", ms);
+                DibujarBotonEstetico(btnSalirGameOver, "SALIR", ms);
             }
             _spriteBatch.End();
         }
