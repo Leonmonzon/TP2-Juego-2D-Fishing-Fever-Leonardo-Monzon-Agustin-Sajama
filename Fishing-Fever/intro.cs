@@ -6,27 +6,24 @@ using System;
 
 namespace Fishing_Fever
 {
-    // Usamos el mismo Enum para consistencia
-    public enum EstadoMenu { Principal, Configuracion }
-
     public class Intro : Game
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        GraphicsDeviceManager _graphics;
+        SpriteBatch _spriteBatch;
 
-        private Texture2D portada;
-        private Texture2D pixel; 
-        private SpriteFont fuente;
+        Texture2D portada;
+        Texture2D pixel; 
+        SpriteFont fuente;
 
-        private Song musicaIntro;
-        private bool musicaIniciada;
-
-        private EstadoMenu estadoActual = EstadoMenu.Principal;
+        Song musicaIntro;
+        bool musicaIniciada;
 
         // Botones
-        private Rectangle btnJugar, btnConfig, btnSalir, btnVolumen, btnAtras;
+        Rectangle btnJugar;
+        Rectangle btnConfig;
+        Rectangle btnSalir;
 
-        private MouseState mouseAnterior;
+        MouseState mouseAnterior;
 
         public Intro()
         {
@@ -34,7 +31,6 @@ namespace Fishing_Fever
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             
-            // Resolución estándar
             _graphics.PreferredBackBufferWidth = 800;
             _graphics.PreferredBackBufferHeight = 600;
         }
@@ -50,71 +46,44 @@ namespace Fishing_Fever
             pixel = new Texture2D(GraphicsDevice, 1, 1);
             pixel.SetData(new[] { Color.White });
 
-            ConfigurarBotones();
-        }
-
-        private void ConfigurarBotones()
-        {
-            // Tamaño de botones pequeños y posición baja para no tapar el título
-            int btnW = 220; 
-            int btnH = 45;  
+            int btnW = 280;
+            int btnH = 55;
             int centroX = _graphics.PreferredBackBufferWidth / 2 - (btnW / 2);
-            int inicioY = 420; 
+            
+            // --- CAMBIO AQUÍ: Bajamos el inicio de los botones ---
+            int inicioY = 380; // Antes estaba en 300-320. Súbelo o bájalo según tu portada.
 
-            // Rectángulos del Menú Principal
             btnJugar  = new Rectangle(centroX, inicioY, btnW, btnH);
-            btnConfig = new Rectangle(centroX, inicioY + 55, btnW, btnH);
-            btnSalir  = new Rectangle(centroX, inicioY + 110, btnW, btnH);
-
-            // Rectángulos de Configuración (reutilizamos posiciones para limpieza visual)
-            btnVolumen = new Rectangle(centroX, inicioY, btnW, btnH);
-            btnAtras   = new Rectangle(centroX, inicioY + 55, btnW, btnH);
+            btnConfig = new Rectangle(centroX, inicioY + 70, btnW, btnH);
+            btnSalir  = new Rectangle(centroX, inicioY + 140, btnW, btnH);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            // Iniciar música con el volumen guardado en Game1
             if (!musicaIniciada)
             {
                 MediaPlayer.IsRepeating = true;
-                MediaPlayer.Volume = Game1.NivelesVolumen[Game1.IndiceVolumen];
+                MediaPlayer.Volume = 0.5f;
                 MediaPlayer.Play(musicaIntro);
                 musicaIniciada = true;
             }
 
             var mouse = Mouse.GetState();
-            bool click = mouse.LeftButton == ButtonState.Pressed && mouseAnterior.LeftButton == ButtonState.Released;
+            bool click = mouse.LeftButton == ButtonState.Pressed &&
+                         mouseAnterior.LeftButton == ButtonState.Released;
 
             if (click)
             {
-                if (estadoActual == EstadoMenu.Principal)
+                if (btnJugar.Contains(mouse.Position))
                 {
-                    if (btnJugar.Contains(mouse.Position))
+                    MediaPlayer.Stop();
+                    using (Game1 juego = new Game1())
                     {
-                        MediaPlayer.Stop();
-                        // Al lanzar Game1, este tomará el IndiceVolumen que hayamos elegido aquí
-                        using (Game1 juego = new Game1()) { juego.Run(); }
-                        Exit();
+                        juego.Run();
                     }
-                    if (btnConfig.Contains(mouse.Position))
-                    {
-                        estadoActual = EstadoMenu.Configuracion;
-                    }
-                    if (btnSalir.Contains(mouse.Position)) Exit();
+                    Exit();
                 }
-                else if (estadoActual == EstadoMenu.Configuracion)
-                {
-                    if (btnVolumen.Contains(mouse.Position))
-                    {
-                        // Ciclo de volumen compartido con Game1
-                        Game1.IndiceVolumen = (Game1.IndiceVolumen + 1) % Game1.NivelesVolumen.Length;
-                        MediaPlayer.Volume = Game1.NivelesVolumen[Game1.IndiceVolumen];
-                    }
-                    if (btnAtras.Contains(mouse.Position))
-                    {
-                        estadoActual = EstadoMenu.Principal;
-                    }
-                }
+                if (btnSalir.Contains(mouse.Position)) Exit();
             }
 
             mouseAnterior = mouse;
@@ -126,24 +95,14 @@ namespace Fishing_Fever
             GraphicsDevice.Clear(Color.Black);
             _spriteBatch.Begin();
 
-            // Dibujar la imagen de portada
             _spriteBatch.Draw(portada, new Rectangle(0, 0, 800, 600), Color.White);
 
             MouseState ms = Mouse.GetState();
 
-            if (estadoActual == EstadoMenu.Principal)
-            {
-                DibujarBotonEstetico(btnJugar, "JUGAR", ms);
-                DibujarBotonEstetico(btnConfig, "OPCIONES", ms);
-                DibujarBotonEstetico(btnSalir, "SALIR", ms);
-            }
-            else
-            {
-                // Mostramos el nombre del volumen actual (SILENCIO, BAJO, etc.)
-                string textoVolumen = "SONIDO: " + Game1.NombresVolumen[Game1.IndiceVolumen];
-                DibujarBotonEstetico(btnVolumen, textoVolumen, ms);
-                DibujarBotonEstetico(btnAtras, "VOLVER", ms);
-            }
+            // Dibujar botones con estética unificada
+            DibujarBotonEstetico(btnJugar, "JUGAR", ms);
+            DibujarBotonEstetico(btnConfig, "CONFIGURACION", ms);
+            DibujarBotonEstetico(btnSalir, "SALIR", ms);
 
             _spriteBatch.End();
             base.Draw(gameTime);
@@ -152,27 +111,27 @@ namespace Fishing_Fever
         private void DibujarBotonEstetico(Rectangle rect, string texto, MouseState ms)
         {
             bool estaEncima = rect.Contains(ms.Position);
-            float escala = estaEncima ? 1.03f : 1.0f;
             
-            // Colores unificados con el menú de pausa
-            Color colorBoton = estaEncima ? Color.FromNonPremultiplied(50, 50, 80, 230) : Color.FromNonPremultiplied(30, 30, 30, 200);
-            Color colorBorde = estaEncima ? Color.Gold : Color.White * 0.3f;
+            // Lógica de escala (si está encima, crece un 5%)
+            float escala = estaEncima ? 1.05f : 1.0f;
+            
+            Color colorBoton = estaEncima ? Color.DarkSlateBlue : Color.FromNonPremultiplied(40, 40, 40, 220);
+            Color colorBorde = estaEncima ? Color.Gold : Color.White * 0.4f;
 
+            // Calculamos el origen para que el botón crezca desde el centro y no desde la esquina
             Vector2 centroBoton = new Vector2(rect.X + rect.Width / 2, rect.Y + rect.Height / 2);
             Vector2 tamañoBoton = new Vector2(rect.Width, rect.Height);
 
-            // Dibujar Borde
-            _spriteBatch.Draw(pixel, centroBoton, null, colorBorde, 0f, new Vector2(0.5f, 0.5f), tamañoBoton * escala + new Vector2(3, 3), SpriteEffects.None, 0f);
+            // 1. Borde (un poco más grande que el botón)
+            _spriteBatch.Draw(pixel, centroBoton, null, colorBorde, 0f, new Vector2(0.5f, 0.5f), tamañoBoton * escala + new Vector2(4, 4), SpriteEffects.None, 0f);
             
-            // Dibujar Fondo
+            // 2. Fondo
             _spriteBatch.Draw(pixel, centroBoton, null, colorBoton, 0f, new Vector2(0.5f, 0.5f), tamañoBoton * escala, SpriteEffects.None, 0f);
 
-            // Dibujar Texto centrado con sombra
+            // 3. Texto
             Vector2 textSize = fuente.MeasureString(texto);
-            float escalaTexto = escala * 0.85f; 
-
-            _spriteBatch.DrawString(fuente, texto, centroBoton + new Vector2(1, 1), Color.Black * 0.5f, 0f, textSize / 2, escalaTexto, SpriteEffects.None, 0f);
-            _spriteBatch.DrawString(fuente, texto, centroBoton, estaEncima ? Color.Gold : Color.White, 0f, textSize / 2, escalaTexto, SpriteEffects.None, 0f);
+            _spriteBatch.DrawString(fuente, texto, centroBoton + new Vector2(2, 2), Color.Black * 0.5f, 0f, textSize / 2, escala, SpriteEffects.None, 0f);
+            _spriteBatch.DrawString(fuente, texto, centroBoton, estaEncima ? Color.Gold : Color.White, 0f, textSize / 2, escala, SpriteEffects.None, 0f);
         }
     }
 }
